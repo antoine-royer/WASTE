@@ -16,11 +16,11 @@ $ source venv/bin/activate
 
 Install dependencies and the script:
 ```
-$ mkdir waste/players
 $ pip install -e .
 ```
 
-And then run `waste` in your terminal to run the script.
+If you don't have a `players` directory in the `waste` one, please create it.
+And then run `waste-run` in your terminal to run the script.
 
 ## Licence
 This code is provided under the GNU General Public Licence v3.0+ (GPLv3+).
