@@ -16,6 +16,7 @@ $ source venv/bin/activate
 
 Install dependencies and the script:
 ```
+$ mkdir waste/players
 $ pip install -e .
 ```
 

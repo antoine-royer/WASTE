@@ -38,7 +38,7 @@ attr = "waste.__init__.__version__"
 dependencies = {file = ["requirements.txt"]}
 
 [project.scripts]
-waste = "waste.__main__:main"
+waste-run = "waste.__main__:main"
 
 # [project.urls]
 # Homepage = ""
