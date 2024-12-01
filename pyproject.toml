@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "WASTE"
+authors = [
+	{name="Antoine ROYER"}
+]
+description = "Wasteland Adventure Support Tool and Enhancer"
+readme = {file = "README.md", content-type = "text/markdown"}
+requires-python = ">=3.7"
+classifiers = [
+	"Programming Language :: Python :: 3",
+	"License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+]
+dynamic = [
+	"version",
+	"dependencies"
+]
+
+# [tool.setuptools]
+# license-files = [
+#     "LICENSE",
+# ]
+
+# [project.optional-dependencies]
+# doc = [
+#     "sphinx>=7.0.1",
+#     "sphinx-rtd-theme",
+#     "sphinx-autodocgen",
+# ]
+
+[tool.setuptools.dynamic.version]
+attr = "waste.__init__.__version__"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[project.scripts]
+waste = "waste.__main__:main"
+
+# [project.urls]
+# Homepage = ""
+# Documentation = ""
