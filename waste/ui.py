@@ -52,7 +52,7 @@ class Player:
         """Save the player's data into its file."""
         if not self.filename:
             name = self.name.lower().replace(" ", "_")
-            self.filename = f"waste/players/{name}.json"
+            self.filename = f"waste/players/player_{len(os.listdir("waste/players/")) + 1}.json"
 
         data = {"name": self.name, "SPECIAL": self.special, "abilities": self.abilities}
         with open(self.filename, "w", encoding="utf-8") as file:
@@ -72,6 +72,7 @@ class MainHandler:
     def on_add_player_clicked(self, *args):
         """Add a new player."""
         player = new_player()
+        player.save_in_file()
         edit_player(player)
         self.players.append(player)
         self.__update_players_grid()
@@ -190,7 +191,6 @@ class EditHandler:
             self.player.special[spin_name.upper()] = spin.get_value_as_int()
 
         self.player.save_in_file()
-        self.__update_abilities_grid()
 
     def on_discard_clicked(self, *args):
         """Restore the player's data from the file."""
@@ -226,6 +226,7 @@ class EditHandler:
     def on_spin_value_changed(self, _, index):
         """Update the player's ability."""
         self.player.abilities[index][0] = self.spins_abilities[index].get_value_as_int()
+        self.__update_abilities_grid()
 
     def on_checkbox_toggled(self, _, index):
         """Toggle the personnal asset."""
