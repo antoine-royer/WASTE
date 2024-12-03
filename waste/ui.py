@@ -5,58 +5,10 @@ import os
 
 import gi
 
+from waste.player import SKILLS, SPECIAL, Player, new_player
+
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
-
-SPECIAL = ("str", "per", "end", "cha", "int", "agi", "lck")
-ABILITIES = (
-    "Armes à énergie",
-    "Armes de corps à corps",
-    "Armes légères",
-    "Armes lourdes",
-    "Athlétisme",
-    "Crochetage",
-    "Discours",
-    "Discrétion",
-    "Explosifs",
-    "Mains nues",
-    "Médecine",
-    "Pilotage",
-    "Projectiles",
-    "Réparation",
-    "Science",
-    "Survie",
-    "Troc",
-)
-
-
-class Player:
-    """Player class that handle the interface between files and players in the script."""
-
-    def __init__(self, filename, name, special, abilities):
-        """Constructor method."""
-        self.filename = filename
-        self.name = name
-        self.special = special
-        self.abilities = abilities
-
-    def restore_from_file(self):
-        """Overwrite the Player's instance with the content of the reference file for the player."""
-        with open(self.filename, "r", encoding="utf-8") as file:
-            player_data = json.load(file)
-            self.name = player_data["name"]
-            self.special = player_data["SPECIAL"]
-            self.abilities = player_data["abilities"]
-
-    def save_in_file(self):
-        """Save the player's data into its file."""
-        if not self.filename:
-            name = self.name.lower().replace(" ", "_")
-            self.filename = f"waste/players/player_{len(os.listdir("waste/players/")) + 1}.json"
-
-        data = {"name": self.name, "SPECIAL": self.special, "abilities": self.abilities}
-        with open(self.filename, "w", encoding="utf-8") as file:
-            file.write(json.dumps(data, indent=8))
 
 
 class MainHandler:
@@ -89,21 +41,25 @@ class MainHandler:
                 self.players.append(
                     Player(
                         f"waste/players/{player}",
-                        player_data["name"],
-                        player_data["SPECIAL"],
-                        player_data["abilities"],
+                        player_data["NAME"],
+                        {
+                            "LVL": player_data["LVL"],
+                            "ORIGIN": player_data["ORIGIN"],
+                            "SPECIAL": player_data["SPECIAL"],
+                        },
+                        player_data["SKILLS"],
                     )
                 )
 
         # Update the players' grid on the UI
         self.__update_players_grid()
 
-    def on_edit_player_clicked(self, _, identifier):
+    def on_edit_player_clicked(self, _, identifier: int):
         """Edit an existing player."""
         edit_player(self.players[identifier])
         self.__update_players_grid()
 
-    def on_suppr_player_clicked(self, _, identifier):
+    def on_suppr_player_clicked(self, _, identifier: int):
         """
         Delete an existing player. The player's file will not be deleted, but it will be no
         longer displayed.
@@ -163,103 +119,96 @@ class EditHandler:
         """Constructor method."""
         self.builder = builder
         self.player = player
-
-        self.spins_abilities = []
-        for index in range(len(ABILITIES)):
-            self.spins_abilities.append(Gtk.SpinButton())
-            adjustment = Gtk.Adjustment(upper=10, step_increment=1, page_increment=1)
-            self.spins_abilities[index].set_adjustment(adjustment)
-            self.spins_abilities[-1].set_value(self.player.abilities[index][0])
-            self.spins_abilities[-1].connect("value-changed", self.on_spin_value_changed, index)
+        self.spins_skills = {}
 
         name = self.builder.get_object("player_name")
         name.set_text(player.name)
 
+        lvl = self.builder.get_object("lvl")
+        lvl.set_value(player.data["LVL"])
+
+        origins_list = self.builder.get_object("origins_list")
+        origins_list.set_active(player.data["ORIGIN"])
+
         for spin_name in SPECIAL:
             spin = self.builder.get_object(spin_name)
-            spin.set_value(self.player.special[spin_name.upper()])
+            spin.set_value(self.player.data["SPECIAL"][spin_name.upper()])
 
-        self.__update_abilities_grid()
+        self.__update_skills_grid()
 
     def on_save_clicked(self, *args):
         """Save the change in the file."""
         name = self.builder.get_object("player_name")
         self.player.name = name.get_text()
 
+        lvl = self.builder.get_object("lvl")
+        self.player.data["LVL"] = lvl.get_value_as_int()
+
+        origins_list = self.builder.get_object("origins_list")
+        self.player.data["ORIGIN"] = origins_list.get_active()
+
         for spin_name in ("str", "per", "end", "cha", "int", "agi", "lck"):
             spin = self.builder.get_object(spin_name)
-            self.player.special[spin_name.upper()] = spin.get_value_as_int()
+            self.player.data["SPECIAL"][spin_name.upper()] = spin.get_value_as_int()
 
         self.player.save_in_file()
 
     def on_discard_clicked(self, *args):
         """Restore the player's data from the file."""
-        if not self.player.filename:
-            dialog = Gtk.MessageDialog(
-                transient_for=self.builder.get_object("main_window"),
-                flags=0,
-                message_type=Gtk.MessageType.ERROR,
-                buttons=Gtk.ButtonsType.CANCEL,
-                text="Fichier introuvable",
-            )
-            dialog.format_secondary_text(
-                f"Le fichier pour le joueur '{self.player.name}' n'existe pas, vous devez suivre "
-                f"ces deux étapes :\n1. renseigner un nom pour le joueur\n2. valider les "
-                f"changements."
-            )
-            dialog.run()
-            dialog.destroy()
+        self.player.restore_from_file()
+        self.__init__(self.builder, self.player)
 
-        else:
-            self.player.restore_from_file()
-            self.__init__(self.builder, self.player)
+    def on_add_skill_clicked(self, *args):
+        """Add an skill to the player."""
+        skill_index = self.builder.get_object("skills_list").get_active()
 
-    def on_add_ability_clicked(self, *args):
-        """Add an ability to the player."""
-        ability = self.builder.get_object("abilities_list").get_active_text()
-        ability_index = ABILITIES.index(ability)
-
-        if not self.player.abilities[ability_index][0]:
-            self.player.abilities[ability_index] = [1, 0]
-            self.__update_abilities_grid()
+        if not self.player.skills[skill_index][0]:
+            self.player.skills[skill_index] = [1, 0]
+            self.__update_skills_grid()
 
     def on_spin_value_changed(self, _, index):
-        """Update the player's ability."""
-        self.player.abilities[index][0] = self.spins_abilities[index].get_value_as_int()
-        self.__update_abilities_grid()
+        """Update the player's skill."""
+        self.player.skills[index][0] = self.spins_skills[index].get_value_as_int()
+        self.__update_skills_grid()
 
     def on_checkbox_toggled(self, _, index):
         """Toggle the personnal asset."""
-        self.player.abilities[index][1] = (self.player.abilities[index][1] + 1) % 2
+        self.player.skills[index][1] = (self.player.skills[index][1] + 1) % 2
 
-    def __update_abilities_grid(self):
-        """Update the abilities list."""
-        # Get the abilities' grid
-        abilities_grid = self.builder.get_object("abilities_grid")
+    def __update_skills_grid(self):
+        """Update the skills list."""
+        # Get the skills' grid
+        skills_grid = self.builder.get_object("skills_grid")
 
         # Clean the grid
-        for child in abilities_grid.get_children():
-            abilities_grid.remove(child)
+        for child in skills_grid.get_children():
+            skills_grid.remove(child)
 
-        # Display the abilities
-        for index, spin in enumerate(self.spins_abilities):
-            value, personal_asset = self.player.abilities[index]
+        # Display the skills
+        self.spins_skills = {}
+        for index in range(len(SKILLS)):
+            value, personal_asset = self.player.skills[index]
             if value == 0:
                 continue
 
-            ability_name = Gtk.Label()
-            ability_name.set_markup(ABILITIES[index])
-            abilities_grid.attach(ability_name, 0, index + 1, 1, 1)
+            skill_name = Gtk.Label()
+            skill_name.set_markup(SKILLS[index])
+            skills_grid.attach(skill_name, 0, index, 1, 1)
 
+            spin = Gtk.SpinButton()
+            adjustment = Gtk.Adjustment(upper=10, step_increment=1, page_increment=1)
+            spin.set_adjustment(adjustment)
             spin.set_value(value)
-            abilities_grid.attach(spin, 1, index + 1, 1, 1)
+            spin.connect("value-changed", self.on_spin_value_changed, index)
+            skills_grid.attach(spin, 1, index, 1, 1)
+            self.spins_skills[index] = spin
 
             checkbox = Gtk.CheckButton(label="")
             checkbox.set_active(bool(personal_asset))
             checkbox.connect("toggled", self.on_checkbox_toggled, index)
-            abilities_grid.attach(checkbox, 2, index + 1, 1, 1)
+            skills_grid.attach(checkbox, 2, index, 1, 1)
 
-        abilities_grid.show_all()
+        skills_grid.show_all()
 
 
 class ConfirmationDialog(Gtk.Dialog):
@@ -282,16 +231,6 @@ class ConfirmationDialog(Gtk.Dialog):
         box = self.get_content_area()
         box.add(label)
         self.show_all()
-
-
-def new_player():
-    """Create a new player, returns a Player's instance."""
-    return Player(
-        "",
-        "Nouveau Joueur",
-        {key.upper(): 5 for key in SPECIAL},
-        [[0, 0] for _ in range(len(ABILITIES))],
-    )
 
 
 def edit_player(player):

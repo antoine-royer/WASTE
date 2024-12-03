@@ -4,6 +4,10 @@
   <requires lib="gtk+" version="3.24"/>
   <object class="GtkWindow" id="main_window">
     <property name="can-focus">False</property>
+    <property name="margin-start">3</property>
+    <property name="margin-end">3</property>
+    <property name="margin-top">3</property>
+    <property name="margin-bottom">3</property>
     <property name="title" translatable="yes">W.A.S.T.E.</property>
     <child>
       <object class="GtkBox">
@@ -33,6 +37,8 @@
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="row-spacing">3</property>
+                <property name="column-spacing">3</property>
                 <child>
                   <placeholder/>
                 </child>
@@ -71,6 +77,8 @@
               <object class="GtkGrid">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
+                <property name="row-spacing">3</property>
+                <property name="column-spacing">3</property>
                 <child>
                   <placeholder/>
                 </child>
@@ -109,12 +117,9 @@
               <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="margin-start">3</property>
-                <property name="margin-end">3</property>
-                <property name="margin-bottom">3</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <!-- n-columns=4 n-rows=3 -->
+                  <!-- n-columns=4 n-rows=1 -->
                   <object class="GtkGrid" id="players_grid">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
@@ -122,30 +127,6 @@
                     <property name="column-spacing">3</property>
                     <property name="row-homogeneous">True</property>
                     <property name="column-homogeneous">True</property>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
-                    <child>
-                      <placeholder/>
-                    </child>
                     <child>
                       <placeholder/>
                     </child>
