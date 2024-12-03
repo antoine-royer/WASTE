@@ -2,4 +2,4 @@ venv
 __pycache__
 WASTE.egg-info
 waste/ui/*.glade~
-player/*.json
+waste/players/*.json

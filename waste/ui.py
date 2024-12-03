@@ -5,7 +5,7 @@ import os
 
 import gi
 
-from waste.player import SKILLS, SPECIAL, Player, new_player
+from waste.player import SKILLS, SPECIAL, PERKS, Player, new_player
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
@@ -48,6 +48,7 @@ class MainHandler:
                             "SPECIAL": player_data["SPECIAL"],
                         },
                         player_data["SKILLS"],
+                        player_data["PERKS"],
                     )
                 )
 
@@ -120,6 +121,7 @@ class EditHandler:
         self.builder = builder
         self.player = player
         self.spins_skills = {}
+        self.spins_perks = {}
 
         name = self.builder.get_object("player_name")
         name.set_text(player.name)
@@ -135,6 +137,7 @@ class EditHandler:
             spin.set_value(self.player.data["SPECIAL"][spin_name.upper()])
 
         self.__update_skills_grid()
+        self.__update_perks_grid()
 
     def on_save_clicked(self, *args):
         """Save the change in the file."""
@@ -160,25 +163,55 @@ class EditHandler:
 
     def on_add_skill_clicked(self, *args):
         """Add an skill to the player."""
-        skill_index = self.builder.get_object("skills_list").get_active()
+        skill_id = self.builder.get_object("skills_list").get_active_id()
 
-        if not self.player.skills[skill_index][0]:
-            self.player.skills[skill_index] = [1, 0]
+        if skill_id not in self.player.skills:
+            self.player.skills[str(skill_id)] = [1, 0]
             self.__update_skills_grid()
 
-    def on_spin_value_changed(self, _, index):
+    def on_skill_spin_value_changed(self, _, index):
         """Update the player's skill."""
-        self.player.skills[index][0] = self.spins_skills[index].get_value_as_int()
+        new_value = self.spins_skills[index].get_value_as_int()
+        if new_value == 0:
+            self.player.skills.pop(index)
+        else:
+            self.player.skills[index][0] = new_value
+        
         self.__update_skills_grid()
 
     def on_checkbox_toggled(self, _, index):
         """Toggle the personnal asset."""
         self.player.skills[index][1] = (self.player.skills[index][1] + 1) % 2
 
+    def on_add_perk_clicked(self, *args):
+        """Add a perk to the player."""
+        perk_id = self.builder.get_object("perks_list").get_active_id()
+
+        if perk_id not in self.player.perks:
+            # need to check
+            self.player.perks[perk_id] = 1
+        elif self.player.perks[perk_id] < PERKS[int(perk_id)]["rank"]:
+            self.player.perks[perk_id] += 1
+
+        self.__update_perks_grid()
+
+    def on_suppr_perk_clicked(self, _, index):
+        self.player.perks[index] -= 1
+        if self.player.perks[index] == 0:
+            self.player.perks.pop(index)
+        
+        self.__update_perks_grid()
+
     def __update_skills_grid(self):
         """Update the skills list."""
         # Get the skills' grid
         skills_grid = self.builder.get_object("skills_grid")
+
+        skills_list = self.builder.get_object("skills_list")
+        skills_list.remove_all()
+        for index, skill in enumerate(SKILLS):
+            if str(index) not in self.player.skills:
+                skills_list.append(str(index), skill)
 
         # Clean the grid
         for child in skills_grid.get_children():
@@ -186,29 +219,62 @@ class EditHandler:
 
         # Display the skills
         self.spins_skills = {}
-        for index in range(len(SKILLS)):
-            value, personal_asset = self.player.skills[index]
-            if value == 0:
-                continue
+        for index, (skill_id, value) in enumerate(self.player.skills.items()):
+            skill_value, tagged_skill = value
 
             skill_name = Gtk.Label()
-            skill_name.set_markup(SKILLS[index])
+            skill_name.set_markup(SKILLS[int(skill_id)])
             skills_grid.attach(skill_name, 0, index, 1, 1)
 
             spin = Gtk.SpinButton()
             adjustment = Gtk.Adjustment(upper=10, step_increment=1, page_increment=1)
             spin.set_adjustment(adjustment)
-            spin.set_value(value)
-            spin.connect("value-changed", self.on_spin_value_changed, index)
+            spin.set_value(skill_value)
+            spin.connect("value-changed", self.on_skill_spin_value_changed, skill_id)
             skills_grid.attach(spin, 1, index, 1, 1)
-            self.spins_skills[index] = spin
+            self.spins_skills[skill_id] = spin
 
-            checkbox = Gtk.CheckButton(label="")
-            checkbox.set_active(bool(personal_asset))
-            checkbox.connect("toggled", self.on_checkbox_toggled, index)
+            checkbox = Gtk.CheckButton()
+            checkbox.set_active(bool(tagged_skill))
+            checkbox.connect("toggled", self.on_checkbox_toggled, skill_id)
             skills_grid.attach(checkbox, 2, index, 1, 1)
 
         skills_grid.show_all()
+
+    def __update_perks_grid(self):
+        """Update the perks list."""
+        # Get the perks' grid
+        perks_grid = self.builder.get_object("perks_grid")
+
+        perks_list = self.builder.get_object("perks_list")
+        perks_list.remove_all()
+        for index, perk in enumerate(PERKS):
+            if str(index) not in self.player.perks or self.player.perks[str(index)] < perk["rank"]:
+                perks_list.append(str(index), perk["name"])
+
+        # Clean the grid
+        for child in perks_grid.get_children():
+            perks_grid.remove(child)
+
+        # Display the perks
+        self.spins_perks = {}
+        for index, (perk_id, perk_value) in enumerate(self.player.perks.items()):
+            perk_name = Gtk.Label()
+            perk_name.set_markup("<b>" + PERKS[int(perk_id)]["name"] + f"</b> (Rang {perk_value})")
+            perk_name.set_line_wrap(True)
+            perks_grid.attach(perk_name, 0, index, 1, 1)
+
+            perk_description = Gtk.Label()
+            perk_description.set_markup(PERKS[int(perk_id)]["description"])
+            perk_description.set_line_wrap(True)
+            perks_grid.attach(perk_description, 1, index, 1, 1)
+
+            suppr = Gtk.Button(label="", image=Gtk.Image(stock=Gtk.STOCK_REMOVE))
+            suppr.set_always_show_image(True)
+            suppr.connect("clicked", self.on_suppr_perk_clicked, perk_id)
+            perks_grid.attach(suppr, 2, index, 1, 1)
+
+        perks_grid.show_all()
 
 
 class ConfirmationDialog(Gtk.Dialog):

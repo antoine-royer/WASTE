@@ -1,0 +1,2119 @@
+[
+        {
+                "name": "Ami des animaux",
+                "rank": 2,
+                "description": "Eviter combat animaux / Peuvent te prot\u00e9ger",
+                "requirements": [
+                        [
+                                [
+                                        "CHA",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "CHA",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Amphibie",
+                "rank": 2,
+                "description": "L'eau est votre ami",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        5
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        5
+                                ],
+                                [
+                                        "LVL",
+                                        5
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Antiradiation",
+                "rank": 2,
+                "description": "R\u00e9sistance aux d\u00e9gats de radiation",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Armurier",
+                "rank": 4,
+                "description": "Permet d'ajouter des mods aux armures",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        5
+                                ],
+                                [
+                                        "INT",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        1
+                                ]
+                        ],
+                        [
+                                [
+                                        "STR",
+                                        5
+                                ],
+                                [
+                                        "INT",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        5
+                                ]
+                        ],
+                        [
+                                [
+                                        "STR",
+                                        5
+                                ],
+                                [
+                                        "INT",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        9
+                                ]
+                        ],
+                        [
+                                [
+                                        "STR",
+                                        5
+                                ],
+                                [
+                                        "INT",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        13
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Barbare",
+                "rank": 1,
+                "description": "Force influe sur d\u00e9gats balistique",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        5
+                                ],
+                                [
+                                        "Robot",
+                                        0
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Barycentre",
+                "rank": 1,
+                "description": "Tire dans le torse sans difficult\u00e9 + relance 1d20",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Beau Parleur",
+                "rank": 1,
+                "description": "Relance 1d20 en troc et discour",
+                "requirements": [
+                        [
+                                [
+                                        "CHA",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Blitz",
+                "rank": 2,
+                "description": "Relancer 1d20 attaque CaC / + de d\u00e9gat",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        9
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "AGI",
+                                        9
+                                ],
+                                [
+                                        "LVL",
+                                        5
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Boyaux plomb\u00e9s",
+                "rank": 2,
+                "description": "Peut diminuer les radiations de conso eau/bouffe",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Bricolage",
+                "rank": 1,
+                "description": "R\u00e9parer sans pi\u00e8ce d\u00e9tach\u00e9e jusqu'a complication",
+                "requirements": [
+                        []
+                ]
+        },
+        {
+                "name": "Canaille",
+                "rank": 1,
+                "description": "Ignore la premi\u00e8re complication en lancer discours",
+                "requirements": [
+                        [
+                                [
+                                        "CHA",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Canigou",
+                "rank": 1,
+                "description": "Un chien qui attaque + aide perception ",
+                "requirements": [
+                        [
+                                [
+                                        "CHA",
+                                        5
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Chasseur",
+                "rank": 1,
+                "description": "Brutal contre Mammifere/insecte/lezard/mutant",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Chimie",
+                "rank": 1,
+                "description": "Effet drogue cr\u00e9\u00e9 doubl\u00e9 + Nouvelle recette",
+                "requirements": [
+                        [
+                                [
+                                        "INT",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Chirurgien \u00e0 la chevrotine",
+                "rank": 1,
+                "description": "effet + 1 Perforant avec fusil \u00e0 pompe ",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        5
+                                ],
+                                [
+                                        "AGI",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Cible mouvante",
+                "rank": 1,
+                "description": "Pendant un sprint + 1 de d\u00e9fense",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Cogneur",
+                "rank": 1,
+                "description": "Brutat si attaque CaC avec arme \u00e0 feu",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Commandant Laser",
+                "rank": 2,
+                "description": "Degat + 1d par rang avec arme \u00e0 \u00e9nergie",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        3
+                                ]
+                        ],
+                        [
+                                [
+                                        "PER",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Commando",
+                "rank": 2,
+                "description": "Degat + 1d par rang avec arme cadence superieur ou \u00e9gale \u00e0 3",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        3
+                                ]
+                        ],
+                        [
+                                [
+                                        "AGI",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Compr\u00e9hension",
+                "rank": 1,
+                "description": "Si effet avec 1d, peut utiliser bonus magazine une fois de +",
+                "requirements": [
+                        [
+                                [
+                                        "INT",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Concerto de conserves",
+                "rank": 1,
+                "description": "D\u00e9couvre un aliment en + sans payer de PA",
+                "requirements": [
+                        [
+                                [
+                                        "LCK",
+                                        5
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Coups super critiques",
+                "rank": 1,
+                "description": "1 point de chance pour un coup critique",
+                "requirements": [
+                        [
+                                [
+                                        "LCK",
+                                        9
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "D\u00e9gainage rapide",
+                "rank": 1,
+                "description": "D\u00e9gainer sans faire action mineure",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "D\u00e9nicheur de tr\u00e9sors",
+                "rank": 3,
+                "description": "Lancer d\u00e9s pour capsules supplementaires lors de fouille",
+                "requirements": [
+                        [
+                                [
+                                        "LCK",
+                                        5
+                                ],
+                                [
+                                        "LVL",
+                                        3
+                                ]
+                        ],
+                        [
+                                [
+                                        "LCK",
+                                        5
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ],
+                        [
+                                [
+                                        "LCK",
+                                        5
+                                ],
+                                [
+                                        "LVL",
+                                        11
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Energie solaire",
+                "rank": 1,
+                "description": "Enleve un d\u00e9gat radiation par heure pass\u00e9e au soleil",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Entomologiste",
+                "rank": 1,
+                "description": "effet + 1 Perforant contre insecte",
+                "requirements": [
+                        [
+                                [
+                                        "INT",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Exercice",
+                "rank": 10,
+                "description": "Augmente un SPECIAL de 1",
+                "requirements": [
+                        [
+                                [
+                                        "LVL",
+                                        3
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        5
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        9
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        11
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        13
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        15
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        17
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        19
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        21
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Expert en d\u00e9molition",
+                "rank": 1,
+                "description": "Brutal avec arme Zone d'impact + nouvelle recette explosif",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        6
+                                ],
+                                [
+                                        "LCK",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Expert en robotique",
+                "rank": 3,
+                "description": "R\u00e9pare et am\u00e9liore les robots",
+                "requirements": [
+                        [
+                                [
+                                        "INT",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        3
+                                ]
+                        ],
+                        [
+                                [
+                                        "INT",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ],
+                        [
+                                [
+                                        "INT",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        11
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Fana d'armes",
+                "rank": 4,
+                "description": "Modifier les armes l\u00e9g\u00e8res",
+                "requirements": [
+                        [
+                                [
+                                        "INT",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        3
+                                ]
+                        ],
+                        [
+                                [
+                                        "INT",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ],
+                        [
+                                [
+                                        "INT",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        11
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Fana de capsules",
+                "rank": 1,
+                "description": "10% de diff\u00e9rence sur les n\u00e9gociatons",
+                "requirements": [
+                        [
+                                [
+                                        "CHA",
+                                        5
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Fant\u00f4me",
+                "rank": 1,
+                "description": "Premier d20 gratuit pour test discr\u00e9tion dans l'ombre/obscurit\u00e9",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        5
+                                ],
+                                [
+                                        "AGI",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Farfouilleur",
+                "rank": 3,
+                "description": "Trouver plus de munition",
+                "requirements": [
+                        [
+                                [
+                                        "LCK",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "LCK",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ],
+                        [
+                                [
+                                        "LCK",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        12
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Farmer la pharma",
+                "rank": 1,
+                "description": "Objet supplementaire lors de fouille medicament/drogue",
+                "requirements": [
+                        [
+                                [
+                                        "LCK",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "F\u00eatard",
+                "rank": 1,
+                "description": "Pas de d\u00e9pendance \u00e0 l'alcool, soigne 2PV quand consommation",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        6
+                                ],
+                                [
+                                        "CHA",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Finesse",
+                "rank": 1,
+                "description": "Peut relance tous les d\u00e9s de d\u00e9gats une fois par combat",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        9
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Force de frappe",
+                "rank": 1,
+                "description": "Brutal avec attaque au CaC avec arme \u00e0 2 mains",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Forgeron",
+                "rank": 3,
+                "description": "Modifier les armes CaC",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        3
+                                ]
+                        ],
+                        [
+                                [
+                                        "STR",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ],
+                        [
+                                [
+                                        "STR",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        11
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Frappe perforante",
+                "rank": 1,
+                "description": "effet + 1 Perforant \u00e0 main nue ou arme CaC \u00e0 lame",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Fusilier",
+                "rank": 2,
+                "description": "ajoute 1 d\u00e9gat avec arme a distance \u00e0 2 main, cadence 2 ou moins / +1 Perforant",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        3
+                                ]
+                        ],
+                        [
+                                [
+                                        "AGI",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Fusion",
+                "rank": 1,
+                "description": "Lorsque ennemi tu\u00e9 par arme \u00e9nergie, explose et inflige d\u00e9gat par effet obtenu \u00e0 un autre ennemi",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        10
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Gu\u00e9rison Rapide",
+                "rank": 1,
+                "description": "1d20 gratuit pour test de soin de ses blessures",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        6
+                                ],
+                                [
+                                        "Robot",
+                                        0
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Gu\u00e9risseur",
+                "rank": 3,
+                "description": "Soin 1pv par rang lors d'un soin d'un patient avec \"porter secours\"",
+                "requirements": [
+                        [
+                                [
+                                        "INT",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "INT",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ],
+                        [
+                                [
+                                        "INT",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        12
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Ho-Hisse",
+                "rank": 1,
+                "description": "Attaque \u00e0 distance avec projectile, 1 PA pour augmenter distance",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Homme d'action",
+                "rank": 1,
+                "description": "Pas de difficult\u00e9 suppl\u00e9mentaire quand utilise PA pour action capitale",
+                "requirements": [
+                        []
+                ]
+        },
+        {
+                "name": "Infiltrateur",
+                "rank": 1,
+                "description": "Relance 1d20 lors de test de crochetage",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Infirmier",
+                "rank": 1,
+                "description": "Relancer 1d20 lors d'un test de Porter Secours",
+                "requirements": [
+                        [
+                                [
+                                        "INT",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "La taille compte",
+                "rank": 3,
+                "description": "Ajoute 1 d\u00e9gat par rang avec arme lourde \u00e0 distance",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        7
+                                ],
+                                [
+                                        "AGI",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        1
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        7
+                                ],
+                                [
+                                        "AGI",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        5
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        7
+                                ],
+                                [
+                                        "AGI",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        9
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Locomotive",
+                "rank": 2,
+                "description": "Action capitale, charger vers un ennemi et lancer Athl\u00e9tisme pour infliger d\u00e9gat \u00e0 main nue / Effet en +",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        9
+                                ],
+                                [
+                                        "END",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "STR",
+                                        9
+                                ],
+                                [
+                                        "END",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Mains lestes",
+                "rank": 1,
+                "description": "Recharger + vite et payer 2PA pour augmenter cadence de tir",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Ma\u00eetre-voleur",
+                "rank": 1,
+                "description": "Difficult\u00e9 adversaire pour d\u00e9tection crochetage ou pickpocket augmente de 1",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        8
+                                ],
+                                [
+                                        "AGI",
+                                        9
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Marchand de sable",
+                "rank": 1,
+                "description": "Ajoute 2 d\u00e9gats avec arme \u00e0 silencier pendant attaque furtive",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        9
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "M\u00e9tabolisme rapide",
+                "rank": 3,
+                "description": "R\u00e9cup\u00e8re 1 PV supplementaire par rang lors d'un soin hors repos",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ],
+                                [
+                                        "Robot",
+                                        0
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        5
+                                ],
+                                [
+                                        "Robot",
+                                        0
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        8
+                                ],
+                                [
+                                        "Robot",
+                                        0
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Myst\u00e9rieux \u00e9tranger",
+                "rank": 1,
+                "description": "1 PA pour peut \u00eatre faire venir le myst\u00e9rieux \u00e9tranger qui donne un gros coup de main en combat",
+                "requirements": [
+                        [
+                                [
+                                        "LCK",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Nature audacieuse",
+                "rank": 1,
+                "description": "Si achat 1d20, une relance gratuite",
+                "requirements": [
+                        [
+                                [
+                                        "LCK",
+                                        7
+                                ],
+                                [
+                                        "Nature prudente",
+                                        0
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Nature prudente",
+                "rank": 1,
+                "description": "Si achat 1d20, une relance gratuite",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        7
+                                ],
+                                [
+                                        "Nature audacieuse",
+                                        0
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Ninja",
+                "rank": 1,
+                "description": "Ajoute 2 d\u00e9gats lors d'attaque furtive avec arme aux CaC ou main nue",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Nyctalope",
+                "rank": 1,
+                "description": "R\u00e9duit de 1 les difficult\u00e9s li\u00e9es \u00e0 l'obscurit\u00e9",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Paume paralysante",
+                "rank": 1,
+                "description": "Attaque \u00e0 main nue avec localisation donne \u00e9tourdissant",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Physicien nucl\u00e9aire",
+                "rank": 1,
+                "description": "1 degat radiation en plus par effet radioactif, 3 charges suppl\u00e9mentaires pour r\u00e9acteur \u00e0 fusion",
+                "requirements": [
+                        [
+                                [
+                                        "INT",
+                                        9
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Pickpocket",
+                "rank": 3,
+                "description": "Ignore la premiere complication lors de pickpoket / relance 1d20 / R\u00e9duit de 1 la difficult\u00e9",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        8
+                                ],
+                                [
+                                        "AGI",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "PER",
+                                        8
+                                ],
+                                [
+                                        "AGI",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        5
+                                ]
+                        ],
+                        [
+                                [
+                                        "PER",
+                                        8
+                                ],
+                                [
+                                        "AGI",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Pied l\u00e9ger",
+                "rank": 1,
+                "description": "Ignore une complication par PA d\u00e9pens\u00e9, relance 1d20 lors \u00e9vitement pi\u00e8ge pression",
+                "requirements": [
+                        []
+                ]
+        },
+        {
+                "name": "Pirate",
+                "rank": 1,
+                "description": "R\u00e9duit de 1 les difficult\u00e9s de piratage",
+                "requirements": [
+                        [
+                                [
+                                        "INT",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Pisteur",
+                "rank": 1,
+                "description": "Diviser par 2 les temps de trajets avec test survie + perception",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        6
+                                ],
+                                [
+                                        "END",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Pistolero",
+                "rank": 2,
+                "description": "Ajoute 1 d\u00e9gat par rang avec arme \u00e0 une main \u00e0 distance et relancer d\u00e9s de localisation",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        3
+                                ]
+                        ],
+                        [
+                                [
+                                        "AGI",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Poing de fer",
+                "rank": 2,
+                "description": "Ajout 1 d\u00e9gat attaque \u00e0 main nue / Ajout d\u00e9gat Brutal",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "STR",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Pouss\u00e9e adr\u00e9naline",
+                "rank": 1,
+                "description": "Si pas au PV max, force \u00e0 10 pour attaque \u00e0 CaC",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Pr\u00e9sence terrifiante",
+                "rank": 2,
+                "description": "Relancer 1d20 lors de menace / Peut apeur\u00e9 en plein combat",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        6
+                                ],
+                                [
+                                        "CHA",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        4
+                                ]
+                        ],
+                        [
+                                [
+                                        "STR",
+                                        6
+                                ],
+                                [
+                                        "CHA",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        9
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Pyromane",
+                "rank": 3,
+                "description": "Ajout 1 d\u00e9gat par rang attaque avec du feu",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        3
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        11
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Rage de nerd",
+                "rank": 3,
+                "description": "SI moins d'un quart des PV, +1 d\u00e9gat et RD balistique et energetique / passe \u00e0 +2 / \u00e0 +3",
+                "requirements": [
+                        [
+                                [
+                                        "INT",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        3
+                                ]
+                        ],
+                        [
+                                [
+                                        "INT",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        8
+                                ]
+                        ],
+                        [
+                                [
+                                        "INT",
+                                        8
+                                ],
+                                [
+                                        "LVL",
+                                        13
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Ragout de serpent",
+                "rank": 1,
+                "description": "R\u00e9sistance poison + 2",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Recycleur",
+                "rank": 2,
+                "description": "Recycler un objet donne composant peu fr\u00e9quent / donne composant rare",
+                "requirements": [
+                        [
+                                [
+                                        "LVL",
+                                        4
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        9
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "R\u00e9fracteur",
+                "rank": 2,
+                "description": "Ajout 1 par rang de r\u00e9sistance aux radiations",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        6
+                                ],
+                                [
+                                        "LCK",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "PER",
+                                        6
+                                ],
+                                [
+                                        "LCK",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Reins d'acier",
+                "rank": 3,
+                "description": "Augmente la charge max de 12,5kg par rang",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        5
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "STR",
+                                        5
+                                ],
+                                [
+                                        "LVL",
+                                        4
+                                ]
+                        ],
+                        [
+                                [
+                                        "STR",
+                                        5
+                                ],
+                                [
+                                        "LVL",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "R\u00e9sistance chimique",
+                "rank": 2,
+                "description": "Lance un d\u00e9 de moins pour voir si d\u00e9pendance aux drogues / Impossible de devenir d\u00e9pendant",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Ricochet",
+                "rank": 1,
+                "description": "Si ennemi \u00e0 complication lors d'un tir, 1 point de chance pour que le ricochet le touche",
+                "requirements": [
+                        [
+                                [
+                                        "LCK",
+                                        10
+                                ],
+                                [
+                                        "LVL",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Robustesse",
+                "rank": 2,
+                "description": "Ajoute 1 par rang de r\u00e9sistance balistique pour toute localisation",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        6
+                                ],
+                                [
+                                        "LCK",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        6
+                                ],
+                                [
+                                        "LCK",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Sanguinaire",
+                "rank": 1,
+                "description": "Si coup critique, jeter un d\u00e9 de plus : un effet ajoute une blessure",
+                "requirements": [
+                        [
+                                [
+                                        "LCK",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Scientifique",
+                "rank": 4,
+                "description": "Modifier les armes \u00e0 \u00e9nergie",
+                "requirements": [
+                        [
+                                [
+                                        "INT",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        3
+                                ]
+                        ],
+                        [
+                                [
+                                        "INT",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ],
+                        [
+                                [
+                                        "INT",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        11
+                                ]
+                        ],
+                        [
+                                [
+                                        "INT",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        15
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Sens aff\u00fbt\u00e9s",
+                "rank": 1,
+                "description": "Si viser, alors + 1 perforant",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        7
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Sniper",
+                "rank": 1,
+                "description": "Si viser avec arme pr\u00e9cise, alors choisit la localisation",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        8
+                                ],
+                                [
+                                        "AGI",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Source d'inspiration",
+                "rank": 1,
+                "description": "La r\u00e9serve du groupe peut contenir 1 PA suppl\u00e9mentaire",
+                "requirements": [
+                        [
+                                [
+                                        "CHA",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Sp\u00e9cialit\u00e9 bonus",
+                "rank": 1,
+                "description": "Ajoute un nouveau atout perso et ajoute 2 \u00e0 cette comp\u00e9tence",
+                "requirements": [
+                        [
+                                [
+                                        "LVL",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Squelette adamantin",
+                "rank": 3,
+                "description": "Ajout un d\u00e9gat n\u00e9cessaire par rang pour recevoir un coup critique",
+                "requirements": [
+                        [
+                                [
+                                        "END",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        5
+                                ]
+                        ],
+                        [
+                                [
+                                        "END",
+                                        7
+                                ],
+                                [
+                                        "LVL",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Studieux",
+                "rank": 10,
+                "description": "Augmenter 2 de vos comp\u00e9tences de 1 ou 1 comp\u00e9tences de 2",
+                "requirements": [
+                        [
+                                [
+                                        "LVL",
+                                        4
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        10
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        13
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        16
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        19
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        22
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        25
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        28
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        31
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Tire-au-flanc",
+                "rank": 2,
+                "description": "action capitale se prot\u00e9ger, r\u00e9duit de 1 la difficult\u00e9 / Am\u00e9liorer la d\u00e9fense coute 1 PA",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        5
+                                ]
+                        ],
+                        [
+                                [
+                                        "AGI",
+                                        6
+                                ],
+                                [
+                                        "LVL",
+                                        11
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Tir group\u00e9",
+                "rank": 1,
+                "description": "Attaque \u00e0 distance et augmentation de d\u00e9gat en payant munition, relance jusqu'\u00e0 3 d\u00e9s",
+                "requirements": [
+                        [
+                                [
+                                        "PER",
+                                        8
+                                ],
+                                [
+                                        "AGI",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Tonton flingueur",
+                "rank": 3,
+                "description": "attaque \u00e0 distance, paye 1 PA et munition pour toucher 2eme cible + proche / 2 pour 2 / 3 pour 3",
+                "requirements": [
+                        [
+                                [
+                                        "AGI",
+                                        10
+                                ],
+                                [
+                                        "LVL",
+                                        2
+                                ]
+                        ],
+                        [
+                                [
+                                        "AGI",
+                                        10
+                                ],
+                                [
+                                        "LVL",
+                                        7
+                                ]
+                        ],
+                        [
+                                [
+                                        "AGI",
+                                        10
+                                ],
+                                [
+                                        "LVL",
+                                        12
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Tueur",
+                "rank": 1,
+                "description": "Si inflige un point de d\u00e9gat, paye un point de chance pour coup critique",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Tueur en s\u00e9rie",
+                "rank": 1,
+                "description": "Si tue un ennemi, lance un d\u00e9 : un effet rend 2 PA \u00e0 la r\u00e9serve",
+                "requirements": [
+                        [
+                                [
+                                        "LCK",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Vendeur de Junktown",
+                "rank": 1,
+                "description": "R\u00e9duire de 1 les difficult\u00e9s de troc",
+                "requirements": [
+                        [
+                                [
+                                        "CHA",
+                                        8
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Veuve noir / Gigolo",
+                "rank": 1,
+                "description": "Relancer un 1d20 pour influencer le genre choisi + ajoute 1 d\u00e9gat contre le genre choisi",
+                "requirements": [
+                        [
+                                [
+                                        "CHA",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Vis\u00e9e stable",
+                "rank": 1,
+                "description": "Si viser, peut relancer 2d20 lors de la premiere attaque ou 1d20 \u00e0 chaque attaque du tour",
+                "requirements": [
+                        [
+                                [
+                                        "STR",
+                                        8
+                                ],
+                                [
+                                        "AGI",
+                                        6
+                                ]
+                        ]
+                ]
+        },
+        {
+                "name": "Vitalit\u00e9",
+                "rank": 5,
+                "description": "Ajoute endurance au nombre de PV max",
+                "requirements": [
+                        [
+                                [
+                                        "LVL",
+                                        6
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        11
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        16
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        21
+                                ]
+                        ],
+                        [
+                                [
+                                        "LVL",
+                                        26
+                                ]
+                        ]
+                ]
+        }
+]
