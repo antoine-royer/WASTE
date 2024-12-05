@@ -1,10 +1,10 @@
-[
-	"str",
-	"per",
-	"end",
-	"cha",
-	"int",
-	"agi",
-	"lck"
-]
+{
+	"str": "Force",
+	"per": "Perception",
+	"end": "Endurance",
+	"cha": "Charisme",
+	"int": "Intelligence",
+	"agi": "Agilité",
+	"lck": "Chance"
+}
 
