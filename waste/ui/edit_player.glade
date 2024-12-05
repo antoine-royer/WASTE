@@ -578,14 +578,6 @@
                   <object class="GtkComboBoxText" id="origins_list">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <items>
-                      <item id="0" translatable="yes">Confrérie de l'Acier</item>
-                      <item id="1" translatable="yes">Goule</item>
-                      <item id="2" translatable="yes">Super mutant</item>
-                      <item id="3" translatable="yes">Mister Handy</item>
-                      <item id="4" translatable="yes">Survivant</item>
-                      <item id="5" translatable="yes">Habitant de l'Abri</item>
-                    </items>
                   </object>
                   <packing>
                     <property name="left-attach">1</property>

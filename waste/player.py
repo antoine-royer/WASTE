@@ -4,6 +4,7 @@ import json
 import os
 
 SPECIAL = json.load(open("waste/data/special.json", "r", encoding="utf-8"))
+ORIGINS = json.load(open("waste/data/origins.json", "r", encoding="utf-8"))
 SKILLS = json.load(open("waste/data/skills.json", "r", encoding="utf-8"))
 PERKS = json.load(open("waste/data/perks.json", "r", encoding="utf-8"))
 
@@ -42,7 +43,7 @@ class Player:
 
     def __getitem__(self, item: str):
         """Return requested data on player."""
-        if item.lower() in SPECIAL:
+        if item.lower() in SPECIAL.keys():
             return self.data["SPECIAL"][item]
         return self.data[item]
 
@@ -75,13 +76,21 @@ class Player:
         with open(self.filename, "w", encoding="utf-8") as file:
             file.write(json.dumps(data, indent=8))
 
+    def check_requirements(self, requirements: list):
+        return False not in [
+            self.__getitem__(requirement_name) in requirement_level
+            if requirement_name == "ORIGIN" else
+            self.__getitem__(requirement_name) >= requirement_level
+            for requirement_name, requirement_level in requirements
+        ]
+
 
 def new_player():
     """Create a new player, returns a Player's instance."""
     return Player(
         "",
         "Nouveau Joueur",
-        {"LVL": 1, "ORIGIN": -1, "SPECIAL": {key.upper(): 5 for key in SPECIAL}},
+        {"LVL": 1, "ORIGIN": -1, "SPECIAL": {key.upper(): 5 for key in SPECIAL.keys()}},
         {},
         {},
     )

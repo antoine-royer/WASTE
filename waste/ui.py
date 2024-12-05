@@ -5,7 +5,7 @@ import os
 
 import gi
 
-from waste.player import SKILLS, SPECIAL, PERKS, Player, new_player
+from waste.player import ORIGINS, SKILLS, SPECIAL, PERKS, Player, new_player
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
@@ -130,9 +130,12 @@ class EditHandler:
         lvl.set_value(player.data["LVL"])
 
         origins_list = self.builder.get_object("origins_list")
+        origins_list.remove_all()
+        for index, name in enumerate(ORIGINS):
+            origins_list.append(str(index), name)
         origins_list.set_active(player.data["ORIGIN"])
 
-        for spin_name in SPECIAL:
+        for spin_name in SPECIAL.keys():
             spin = self.builder.get_object(spin_name)
             spin.set_value(self.player.data["SPECIAL"][spin_name.upper()])
 
@@ -155,6 +158,7 @@ class EditHandler:
             self.player.data["SPECIAL"][spin_name.upper()] = spin.get_value_as_int()
 
         self.player.save_in_file()
+        self.__init__(self.builder, self.player)
 
     def on_discard_clicked(self, *args):
         """Restore the player's data from the file."""
@@ -186,14 +190,42 @@ class EditHandler:
     def on_add_perk_clicked(self, *args):
         """Add a perk to the player."""
         perk_id = self.builder.get_object("perks_list").get_active_id()
+        perk = PERKS[int(perk_id)]
 
-        if perk_id not in self.player.perks:
-            # need to check
-            self.player.perks[perk_id] = 1
-        elif self.player.perks[perk_id] < PERKS[int(perk_id)]["rank"]:
-            self.player.perks[perk_id] += 1
+        # Get the current rank for the selected perk
+        rank = 0
+        if perk_id in self.player.perks:
+            rank = self.player.perks[perk_id]
 
-        self.__update_perks_grid()
+        # Check if the player meet the perk's requirements.
+        if (
+            rank <= perk["rank"]
+            and self.player.check_requirements(perk["requirements"][rank])
+        ):
+            self.player.perks[perk_id] = rank + 1
+            self.__update_perks_grid()
+        
+        # Else display an error
+        else:
+            dialog = Gtk.MessageDialog(
+                transient_for=self.builder.get_object("main_window"),
+                flags=0,
+                message_type=Gtk.MessageType.ERROR,
+                buttons=Gtk.ButtonsType.OK,
+                text=f"Impossible d'ajouter l'Attribut : '{perk['name']}'",
+            )
+            dialog.format_secondary_text(
+                "Les pré-requis pour cet Attribut ne sont pas remplis :\n" +
+                "\n".join([
+                    f" - Origine : {', '.join(ORIGINS[i] for i in rmin)}"
+                    if rname == "ORIGIN" else
+                    f" - Niveau >= {rmin}"
+                    if rname == "LVL" else
+                    f" - {SPECIAL[rname.lower()]} >= {rmin}"
+                    for rname, rmin in perk["requirements"][rank]])
+            )
+            dialog.run()
+            dialog.destroy()
 
     def on_suppr_perk_clicked(self, _, index):
         self.player.perks[index] -= 1
@@ -249,7 +281,12 @@ class EditHandler:
         perks_list = self.builder.get_object("perks_list")
         perks_list.remove_all()
         for index, perk in enumerate(PERKS):
-            if str(index) not in self.player.perks or self.player.perks[str(index)] < perk["rank"]:
+            current_rank = 0
+            if str(index) in self.player.perks:
+                current_rank = self.player.perks[str(index)]
+
+            if current_rank < perk["rank"] and not (index in (54, 55) and ("54" in self.player.perks or "55" in self.player.perks)) and self.player.check_requirements(perk["requirements"][current_rank]):
+                # Conflict between Cautious Nature and Daring Nature. 
                 perks_list.append(str(index), perk["name"])
 
         # Clean the grid
