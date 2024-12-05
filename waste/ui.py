@@ -227,7 +227,7 @@ class EditHandler:
             skills_grid.attach(skill_name, 0, index, 1, 1)
 
             spin = Gtk.SpinButton()
-            adjustment = Gtk.Adjustment(upper=10, step_increment=1, page_increment=1)
+            adjustment = Gtk.Adjustment(upper=6 , step_increment=1, page_increment=1)
             spin.set_adjustment(adjustment)
             spin.set_value(skill_value)
             spin.connect("value-changed", self.on_skill_spin_value_changed, skill_id)
