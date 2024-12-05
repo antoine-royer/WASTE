@@ -5,10 +5,15 @@ import os
 
 import gi
 
-from waste.player import ORIGINS, SKILLS, SPECIAL, PERKS, Player, new_player
+from waste.player import ORIGINS, PERKS, SKILLS, SPECIAL, Player, new_player
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
+
+LVL_NAME = "LVL"
+ORIGIN_NAME = "ORIGIN"
+DN_INDEX = 54  # Daring Nature index in PERKS list
+CN_INDEX = 55  # Cautious Nature index in PERKS list
 
 
 class MainHandler:
@@ -21,7 +26,7 @@ class MainHandler:
 
         self.on_update_player_clicked()
 
-    def on_add_player_clicked(self, *args):
+    def on_add_player_clicked(self, *_):
         """Add a new player."""
         player = new_player()
         player.save_in_file()
@@ -29,7 +34,7 @@ class MainHandler:
         self.players.append(player)
         self.__update_players_grid()
 
-    def on_update_player_clicked(self, *args):
+    def on_update_player_clicked(self, *_):
         """Get all the players' file detected and display them all."""
         # Clean the registered players
         self.players = []
@@ -142,7 +147,7 @@ class EditHandler:
         self.__update_skills_grid()
         self.__update_perks_grid()
 
-    def on_save_clicked(self, *args):
+    def on_save_clicked(self, *_):
         """Save the change in the file."""
         name = self.builder.get_object("player_name")
         self.player.name = name.get_text()
@@ -153,21 +158,22 @@ class EditHandler:
         origins_list = self.builder.get_object("origins_list")
         self.player.data["ORIGIN"] = origins_list.get_active()
 
-        for spin_name in ("str", "per", "end", "cha", "int", "agi", "lck"):
+        for spin_name in SPECIAL.keys():
             spin = self.builder.get_object(spin_name)
             self.player.data["SPECIAL"][spin_name.upper()] = spin.get_value_as_int()
 
         self.player.save_in_file()
         self.__init__(self.builder, self.player)
 
-    def on_discard_clicked(self, *args):
+    def on_discard_clicked(self, *_):
         """Restore the player's data from the file."""
         self.player.restore_from_file()
         self.__init__(self.builder, self.player)
 
-    def on_add_skill_clicked(self, *args):
+    def on_add_skill_clicked(self, *_):
         """Add an skill to the player."""
-        skill_id = self.builder.get_object("skills_list").get_active_id()
+        if (skill_id := self.builder.get_object("skills_list").get_active_id()) is None:
+            return
 
         if skill_id not in self.player.skills:
             self.player.skills[str(skill_id)] = [1, 0]
@@ -175,63 +181,37 @@ class EditHandler:
 
     def on_skill_spin_value_changed(self, _, index):
         """Update the player's skill."""
-        new_value = self.spins_skills[index].get_value_as_int()
-        if new_value == 0:
+        if (new_value := self.spins_skills[index].get_value_as_int()) == 0:
             self.player.skills.pop(index)
         else:
             self.player.skills[index][0] = new_value
-        
+
         self.__update_skills_grid()
 
     def on_checkbox_toggled(self, _, index):
         """Toggle the personnal asset."""
         self.player.skills[index][1] = (self.player.skills[index][1] + 1) % 2
 
-    def on_add_perk_clicked(self, *args):
+    def on_add_perk_clicked(self, *_):
         """Add a perk to the player."""
-        perk_id = self.builder.get_object("perks_list").get_active_id()
-        perk = PERKS[int(perk_id)]
+        if (perk_id := self.builder.get_object("perks_list").get_active_id()) is None:
+            return
 
         # Get the current rank for the selected perk
         rank = 0
         if perk_id in self.player.perks:
             rank = self.player.perks[perk_id]
 
-        # Check if the player meet the perk's requirements.
-        if (
-            rank <= perk["rank"]
-            and self.player.check_requirements(perk["requirements"][rank])
-        ):
-            self.player.perks[perk_id] = rank + 1
-            self.__update_perks_grid()
-        
-        # Else display an error
-        else:
-            dialog = Gtk.MessageDialog(
-                transient_for=self.builder.get_object("main_window"),
-                flags=0,
-                message_type=Gtk.MessageType.ERROR,
-                buttons=Gtk.ButtonsType.OK,
-                text=f"Impossible d'ajouter l'Attribut : '{perk['name']}'",
-            )
-            dialog.format_secondary_text(
-                "Les pré-requis pour cet Attribut ne sont pas remplis :\n" +
-                "\n".join([
-                    f" - Origine : {', '.join(ORIGINS[i] for i in rmin)}"
-                    if rname == "ORIGIN" else
-                    f" - Niveau >= {rmin}"
-                    if rname == "LVL" else
-                    f" - {SPECIAL[rname.lower()]} >= {rmin}"
-                    for rname, rmin in perk["requirements"][rank]])
-            )
-            dialog.run()
-            dialog.destroy()
+        # Update the player's perk
+        self.player.perks[perk_id] = rank + 1
+        self.__update_perks_grid()
 
     def on_suppr_perk_clicked(self, _, index):
+        """Removes a rank from the selected perk."""
         self.player.perks[index] -= 1
         if self.player.perks[index] == 0:
             self.player.perks.pop(index)
-        
+
         self.__update_perks_grid()
 
     def __update_skills_grid(self):
@@ -259,7 +239,7 @@ class EditHandler:
             skills_grid.attach(skill_name, 0, index, 1, 1)
 
             spin = Gtk.SpinButton()
-            adjustment = Gtk.Adjustment(upper=6 , step_increment=1, page_increment=1)
+            adjustment = Gtk.Adjustment(upper=6, step_increment=1, page_increment=1)
             spin.set_adjustment(adjustment)
             spin.set_value(skill_value)
             spin.connect("value-changed", self.on_skill_spin_value_changed, skill_id)
@@ -278,15 +258,27 @@ class EditHandler:
         # Get the perks' grid
         perks_grid = self.builder.get_object("perks_grid")
 
+        # Get and clean the list
         perks_list = self.builder.get_object("perks_list")
         perks_list.remove_all()
+
+        # Update the list
         for index, perk in enumerate(PERKS):
             current_rank = 0
             if str(index) in self.player.perks:
                 current_rank = self.player.perks[str(index)]
 
-            if current_rank < perk["rank"] and not (index in (54, 55) and ("54" in self.player.perks or "55" in self.player.perks)) and self.player.check_requirements(perk["requirements"][current_rank]):
-                # Conflict between Cautious Nature and Daring Nature. 
+            if (
+                # Rank check
+                current_rank < perk["rank"]
+                # Conflict between Daring Nature and Cautious Nature
+                and not (
+                    index in {DN_INDEX, CN_INDEX}
+                    and (str(DN_INDEX) in self.player.perks or str(CN_INDEX) in self.player.perks)
+                )
+                # Requirements check
+                and self.player.check_requirements(perk["requirements"][current_rank])
+            ):
                 perks_list.append(str(index), perk["name"])
 
         # Clean the grid

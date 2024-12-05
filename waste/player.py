@@ -3,10 +3,17 @@
 import json
 import os
 
-SPECIAL = json.load(open("waste/data/special.json", "r", encoding="utf-8"))
-ORIGINS = json.load(open("waste/data/origins.json", "r", encoding="utf-8"))
-SKILLS = json.load(open("waste/data/skills.json", "r", encoding="utf-8"))
-PERKS = json.load(open("waste/data/perks.json", "r", encoding="utf-8"))
+with open("waste/data/special.json", "r", encoding="utf-8") as datafile:
+    SPECIAL = json.load(datafile)
+
+with open("waste/data/origins.json", "r", encoding="utf-8") as datafile:
+    ORIGINS = json.load(datafile)
+
+with open("waste/data/skills.json", "r", encoding="utf-8") as datafile:
+    SKILLS = json.load(datafile)
+
+with open("waste/data/perks.json", "r", encoding="utf-8") as datafile:
+    PERKS = json.load(datafile)
 
 
 class Player:
@@ -71,16 +78,30 @@ class Player:
             "ORIGIN": self.data["ORIGIN"],
             "SPECIAL": self.data["SPECIAL"],
             "SKILLS": self.skills,
-            "PERKS": self.perks
+            "PERKS": self.perks,
         }
         with open(self.filename, "w", encoding="utf-8") as file:
             file.write(json.dumps(data, indent=8))
 
     def check_requirements(self, requirements: list):
+        """
+        Check if the player meet the given requirements.
+
+        Parameters
+        ----------
+        requirements : list
+            The list of requirements to meet like: ["NAME": min_value]. "NAME" can be:
+            - a short form of S.P.E.C.I.A.L. ("STR", "PER", "END", "CHA", "INT", "AGI", "LCK")
+            - "LVL" : the level of the player
+            - "ORIGIN" : the origin of the player
+            The min_value is the minimum value, it can also be a list of authorized values.
+        """
         return False not in [
-            self.__getitem__(requirement_name) in requirement_level
-            if requirement_name == "ORIGIN" else
-            self.__getitem__(requirement_name) >= requirement_level
+            (
+                self[requirement_name] in requirement_level
+                if isinstance(requirement_level, int)
+                else self[requirement_name] >= requirement_level
+            )
             for requirement_name, requirement_level in requirements
         ]
 
