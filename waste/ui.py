@@ -50,6 +50,14 @@ class MainHandler:
                         {
                             "LVL": player_data["LVL"],
                             "ORIGIN": player_data["ORIGIN"],
+                            "HEALTH_POINT": player_data["HEALTH_POINT"],
+                            "LUCKY_POINT": player_data["LUCKY_POINT"],
+                            "CARRY_WEIGHT": player_data["CARRY_WEIGHT"],
+                            "DEFENSE": player_data["DEFENSE"],
+                            "PHYSICAL_RESISTANCE": player_data["PHYSICAL_RESISTANCE"],
+                            "ENERGY_RESISTANCE": player_data["ENERGY_RESISTANCE"],
+                            "RADIATION_RESISTANCE": player_data["RADIATION_RESISTANCE"],
+                            "POISON_RESISTANCE": player_data["POISON_RESISTANCE"],
                             "SPECIAL": player_data["SPECIAL"],
                         },
                         player_data["SKILLS"],
@@ -131,14 +139,28 @@ class EditHandler:
         name = self.builder.get_object("player_name")
         name.set_text(player.name)
 
-        lvl = self.builder.get_object("lvl")
-        lvl.set_value(player.data["LVL"])
-
         origins_list = self.builder.get_object("origins_list")
         origins_list.remove_all()
         for index, name in enumerate(ORIGINS):
             origins_list.append(str(index), name)
         origins_list.set_active(player.data["ORIGIN"])
+
+        adjustment_lp = self.builder.get_object("adjustment_lp")
+        adjustment_lp.set_upper(self.player.data["SPECIAL"]["LCK"])
+
+        for spin_name in (
+            "LVL",
+            "HEALTH_POINT",
+            "LUCKY_POINT",
+            "CARRY_WEIGHT",
+            "DEFENSE",
+            "PHYSICAL_RESISTANCE",
+            "ENERGY_RESISTANCE",
+            "RADIATION_RESISTANCE",
+            "POISON_RESISTANCE",
+        ):
+            spin = self.builder.get_object(spin_name.lower())
+            spin.set_value(self.player.data[spin_name])
 
         for spin_name in SPECIAL.keys():
             spin = self.builder.get_object(spin_name)
@@ -152,11 +174,22 @@ class EditHandler:
         name = self.builder.get_object("player_name")
         self.player.name = name.get_text()
 
-        lvl = self.builder.get_object("lvl")
-        self.player.data["LVL"] = lvl.get_value_as_int()
-
         origins_list = self.builder.get_object("origins_list")
         self.player.data["ORIGIN"] = origins_list.get_active()
+
+        for spin_name in (
+            "LVL",
+            "HEALTH_POINT",
+            "LUCKY_POINT",
+            "CARRY_WEIGHT",
+            "DEFENSE",
+            "PHYSICAL_RESISTANCE",
+            "ENERGY_RESISTANCE",
+            "RADIATION_RESISTANCE",
+            "POISON_RESISTANCE",
+        ):
+            spin = self.builder.get_object(spin_name.lower())
+            self.player.data[spin_name] = spin.get_value_as_int()
 
         for spin_name in SPECIAL.keys():
             spin = self.builder.get_object(spin_name)

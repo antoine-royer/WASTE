@@ -35,6 +35,14 @@ class Player:
                 {
                     "LVL": player_level,  # (int)
                     "ORIGIN": player_origin,  # (int)
+                    "HEALTH_POINT": player_health_point,  # (int)
+                    "LUCKY_POINT": player_lucky_point,  # (int)
+                    "CARRY_WEIGHT": player_carry_weight,  # (int)
+                    "DEFENSE": player_defense,  # (int)
+                    "PHYSICAL_RESISTANCE": player_physical,  # (int)
+                    "ENERGY_RESISTANCE": player_energy,  # (int)
+                    "RADIATION_RESISTANCE": player_radiation,  # (int)
+                    "POISON_RESISTANCE": player_poison,  # (int)
                     "SPECIAL": player_special  # (dict)
                 }
         skills : dict
@@ -62,6 +70,14 @@ class Player:
             self.data = {
                 "LVL": player_data["LVL"],
                 "ORIGIN": player_data["ORIGIN"],
+                "HEALTH_POINT": player_data["HEALTH_POINT"],
+                "LUCKY_POINT": player_data["LUCKY_POINT"],
+                "CARRY_WEIGHT": player_data["CARRY_WEIGHT"],
+                "DEFENSE": player_data["DEFENSE"],
+                "PHYSICAL_RESISTANCE": player_data["PHYSICAL_RESISTANCE"],
+                "ENERGY_RESISTANCE": player_data["ENERGY_RESISTANCE"],
+                "RADIATION_RESISTANCE": player_data["RADIATION_RESISTANCE"],
+                "POISON_RESISTANCE": player_data["POISON_RESISTANCE"],
                 "SPECIAL": player_data["SPECIAL"],
             }
             self.skills = player_data["SKILLS"]
@@ -76,6 +92,14 @@ class Player:
             "NAME": self.name,
             "LVL": self.data["LVL"],
             "ORIGIN": self.data["ORIGIN"],
+            "HEALTH_POINT": self.data["HEALTH_POINT"],
+            "LUCKY_POINT": self.data["LUCKY_POINT"],
+            "CARRY_WEIGHT": self.data["CARRY_WEIGHT"],
+            "DEFENSE": self.data["DEFENSE"],
+            "PHYSICAL_RESISTANCE": self.data["PHYSICAL_RESISTANCE"],
+            "ENERGY_RESISTANCE": self.data["ENERGY_RESISTANCE"],
+            "RADIATION_RESISTANCE": self.data["RADIATION_RESISTANCE"],
+            "POISON_RESISTANCE": self.data["POISON_RESISTANCE"],
             "SPECIAL": self.data["SPECIAL"],
             "SKILLS": self.skills,
             "PERKS": self.perks,
@@ -98,9 +122,9 @@ class Player:
         """
         return False not in [
             (
-                self[requirement_name] in requirement_level
+                self[requirement_name] >= requirement_level
                 if isinstance(requirement_level, int)
-                else self[requirement_name] >= requirement_level
+                else self[requirement_name] in requirement_level
             )
             for requirement_name, requirement_level in requirements
         ]
@@ -111,7 +135,19 @@ def new_player():
     return Player(
         "",
         "Nouveau Joueur",
-        {"LVL": 1, "ORIGIN": -1, "SPECIAL": {key.upper(): 5 for key in SPECIAL.keys()}},
+        {
+            "LVL": 1,
+            "ORIGIN": -1,
+            "HEALTH_POINT": 1,
+            "LUCKY_POINT": 0,
+            "CARRY_WEIGHT": 75,
+            "DEFENSE": 1,
+            "PHYSICAL_RESISTANCE": 0,
+            "ENERGY_RESISTANCE": 0,
+            "RADIATION_RESISTANCE": 0,
+            "POISON_RESISTANCE": 0,
+            "SPECIAL": {key.upper(): 5 for key in SPECIAL.keys()},
+        },
         {},
         {},
     )
