@@ -154,13 +154,26 @@ class EditHandler:
             "LUCKY_POINT",
             "CARRY_WEIGHT",
             "DEFENSE",
+        ):
+            spin = self.builder.get_object(spin_name.lower())
+            spin.set_value(self.player.data[spin_name])
+
+        for spin_name in (
             "PHYSICAL_RESISTANCE",
             "ENERGY_RESISTANCE",
             "RADIATION_RESISTANCE",
             "POISON_RESISTANCE",
         ):
-            spin = self.builder.get_object(spin_name.lower())
-            spin.set_value(self.player.data[spin_name])
+            for index, body_part in enumerate((
+                "head",
+                "torso",
+                "rightarm",
+                "leftarm",
+                "rightleg",
+                "leftleg"
+            )):
+                spin = self.builder.get_object(f"{spin_name.lower()}_{body_part}")
+                spin.set_value(self.player.data[spin_name][index])
 
         for spin_name in SPECIAL.keys():
             spin = self.builder.get_object(spin_name)
@@ -183,13 +196,27 @@ class EditHandler:
             "LUCKY_POINT",
             "CARRY_WEIGHT",
             "DEFENSE",
+        ):
+            spin = self.builder.get_object(spin_name.lower())
+            self.player.data[spin_name] = spin.get_value_as_int()
+
+        for spin_name in (
             "PHYSICAL_RESISTANCE",
             "ENERGY_RESISTANCE",
             "RADIATION_RESISTANCE",
             "POISON_RESISTANCE",
         ):
-            spin = self.builder.get_object(spin_name.lower())
-            self.player.data[spin_name] = spin.get_value_as_int()
+            for index, body_part in enumerate((
+                "head",
+                "torso",
+                "rightarm",
+                "leftarm",
+                "rightleg",
+                "leftleg"
+            )):
+                spin = self.builder.get_object(f"{spin_name.lower()}_{body_part}")
+                self.player.data[spin_name][index] = spin.get_value_as_int()
+
 
         for spin_name in SPECIAL.keys():
             spin = self.builder.get_object(spin_name)

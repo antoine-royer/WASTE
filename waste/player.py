@@ -39,10 +39,10 @@ class Player:
                     "LUCKY_POINT": player_lucky_point,  # (int)
                     "CARRY_WEIGHT": player_carry_weight,  # (int)
                     "DEFENSE": player_defense,  # (int)
-                    "PHYSICAL_RESISTANCE": player_physical,  # (int)
-                    "ENERGY_RESISTANCE": player_energy,  # (int)
-                    "RADIATION_RESISTANCE": player_radiation,  # (int)
-                    "POISON_RESISTANCE": player_poison,  # (int)
+                    "PHYSICAL_RESISTANCE": player_physical,  # (list)
+                    "ENERGY_RESISTANCE": player_energy,  # (list)
+                    "RADIATION_RESISTANCE": player_radiation,  # (list)
+                    "POISON_RESISTANCE": player_poison,  # (list)
                     "SPECIAL": player_special  # (dict)
                 }
         skills : dict
@@ -142,10 +142,10 @@ def new_player():
             "LUCKY_POINT": 0,
             "CARRY_WEIGHT": 75,
             "DEFENSE": 1,
-            "PHYSICAL_RESISTANCE": 0,
-            "ENERGY_RESISTANCE": 0,
-            "RADIATION_RESISTANCE": 0,
-            "POISON_RESISTANCE": 0,
+            "PHYSICAL_RESISTANCE": [0, 0, 0, 0, 0, 0],
+            "ENERGY_RESISTANCE": [0, 0, 0, 0, 0, 0],
+            "RADIATION_RESISTANCE": [0, 0, 0, 0, 0, 0],
+            "POISON_RESISTANCE": [0, 0, 0, 0, 0, 0],
             "SPECIAL": {key.upper(): 5 for key in SPECIAL.keys()},
         },
         {},
